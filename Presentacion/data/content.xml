@@ -1,0 +1,885 @@
+<zuiprezi>
+  <version>4</version>
+  <zui-table>
+    <settings>
+      <autoplay>
+        <delay>4000</delay>
+      </autoplay>
+      <bounds x="-127373.63923950194" y="-96373.65963745117" width="279017.9539123535" height="262112.62431030272"/>
+    </settings>
+    <object id="28_496777" type="button" x="-6082.2" y="-73919.4" r="-90" s="30.357955932617188">
+      <type>invisible</type>
+      <size>
+        <w>220</w>
+        <h>219.85</h>
+      </size>
+    </object>
+    <object id="1_646698" type="button" x="-4503.85" y="-73286.9" r="-89.99999999999999" s="3.2769243717193604" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>1991.6823529411763</w>
+        <h>662.55</h>
+      </size>
+    </object>
+    <object id="17_646698" type="shape" x="-4212.65" y="-71334.25" r="-71.86997735866674" s="5.521531183620631" class="line1">
+      <geom type="line">
+        <sp>-143.49764141060794 0</sp>
+        <ep>143.49764141060794 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="0" type="button" x="-92819.4" y="-73999.95" r="0" s="80.13506317138672" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>862.3858471634667</w>
+        <h>558.45</h>
+      </size>
+    </object>
+    <object id="1" type="label" x="-92876.05" y="-82972.9" r="0" s="143.96095275878906" class="head">
+      <textfield>
+        <x>-196.45</x>
+        <y>-34.65</y>
+        <text><![CDATA[Utilización del CAPM para la
+Valuación de Opciones]]></text>
+        <annotations>r0-29 { align: center; }
+r29-50 { align: center; }</annotations>
+        <w>392.85</w>
+        <h>69.3</h>
+      </textfield>
+    </object>
+    <object id="0_448831" type="label" x="-92879.4" y="-74762.8" r="0" s="73.0623550415039" class="body">
+      <textfield>
+        <x>-141.7</x>
+        <y>-18.35</y>
+        <text><![CDATA[Tutor: Dr. Marcelo Perillo]]></text>
+        <annotations>r0-26 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="3_448831" type="label" x="-92819.4" y="-58540.3" r="0" s="73.0623550415039" class="body">
+      <textfield>
+        <x>-141.35</x>
+        <y>-18.35</y>
+        <text><![CDATA[Diego Jancic - LU: 134213]]></text>
+        <annotations>r0-25 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="0_488810" type="label" x="-92880.2" y="-88847.6" r="0" s="68.29461669921875" class="body">
+      <textfield>
+        <x>-235.65</x>
+        <y>-18.35</y>
+        <text><![CDATA[Trabajo de Investigación Final en Finanzas]]></text>
+        <annotations>r0-42 { color: #318bff; }
+r0-42 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="5_496777" type="button" x="-13010.65" y="-73999.95" r="0" s="193.0151824951172" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>357.3</w>
+        <h>231.76216216216216</h>
+      </size>
+    </object>
+    <object id="6_496777" type="label" x="-13956.7" y="-90571.8" r="0" s="181.52845764160156" class="head">
+      <textfield>
+        <x>-144.05</x>
+        <y>-18.35</y>
+        <text><![CDATA[Conceptos Escenciales]]></text>
+        <annotations>r0-21 { align: center; }</annotations>
+        <w>288.05</w>
+        <h>36.65</h>
+      </textfield>
+    </object>
+    <object id="7_496777" type="button" x="-26557.5" y="-69102.95" r="0" s="42.59174346923828" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>612.1457489878543</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="11_496777" type="button" x="-33195.6" y="-73917.1" r="-90" s="30.357955932617188">
+      <type>invisible</type>
+      <size>
+        <w>220</w>
+        <h>219.85</h>
+      </size>
+    </object>
+    <object id="26_496777" type="image" x="-26360.65" y="-72665.65" r="-90" s="5.021134376525879">
+      <source w="1200" h="900">106067815.png<url>106067815.png</url>
+      </source>
+    <resource><id>
+        106067815
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/3/9/4/131aa900f9bf645de8b28dd9ac7bfded2384c.png</url></resource></object>
+    <object id="3" type="label" x="-26703.5" y="-78156.4" r="0" s="85.2422866821289" class="strong">
+      <textfield>
+        <x>-125.55</x>
+        <y>-18.35</y>
+        <text><![CDATA[Valuación de Activos]]></text>
+        <annotations>r0-20 { color: #333; }
+r0-20 { align: center; }</annotations>
+        <w>251.05</w>
+        <h>35</h>
+      </textfield>
+    </object>
+    <object id="0_2729707" type="button" x="751.95" y="-69102.95" r="0" s="42.59174346923828" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>612.1457489878543</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="1_2729707" type="label" x="711.2" y="-78157.7" r="0" s="85.2422866821289" class="strong">
+      <textfield>
+        <x>-132.85</x>
+        <y>-18.35</y>
+        <text><![CDATA[Valuación de Opciones]]></text>
+        <annotations>r0-21 { color: #333; }
+r0-21 { align: center; }</annotations>
+        <w>265.65</w>
+        <h>35</h>
+      </textfield>
+    </object>
+    <object id="12_496777" type="label" x="-35882.7" y="-72855" r="-90" s="17.43858528137207" class="head">
+      <textfield>
+        <x>-164</x>
+        <y>-18.35</y>
+        <text><![CDATA[Capital Asset Pricing Model]]></text>
+        <annotations>r0-27 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="13_496777" type="button" x="749.6" y="-69167.9" r="-90" s="30.357955932617188">
+      <type>invisible</type>
+      <size>
+        <w>861.4963004484307</w>
+        <h>882.6124999999998</h>
+      </size>
+    </object>
+    <object id="27_496777" type="image" x="-20027.75" y="-72664.3" r="-90" s="5.035802841186523">
+      <source w="1200" h="900">106068020.png<url>106068020.png</url>
+      </source>
+    <resource><id>
+        106068020
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/f/5/dd1b81a6dc2165d06a634db074114f39966e0.png</url></resource></object>
+    <object id="21_496777" type="label" x="-29377.3" y="-72666.4" r="-90" s="17.43858528137207" class="head">
+      <textfield>
+        <x>-153.4</x>
+        <y>-18.35</y>
+        <text><![CDATA[Un mercado en equilibrio]]></text>
+        <annotations>r0-24 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="22_496777" type="button" x="-26706.85" y="-73917.6" r="-90" s="30.357955932617188">
+      <type>invisible</type>
+      <size>
+        <w>221.8</w>
+        <h>220.875</h>
+      </size>
+    </object>
+    <object id="23_496777" type="button" x="-20403.35" y="-73919.65" r="-90" s="30.357955932617188">
+      <type>invisible</type>
+      <size>
+        <w>220</w>
+        <h>219.85</h>
+      </size>
+    </object>
+    <object id="24_496777" type="label" x="-23087.55" y="-72490.55" r="-90" s="17.43858528137207" class="head">
+      <textfield>
+        <x>-142.3</x>
+        <y>-18.35</y>
+        <text><![CDATA[La elección del inversor]]></text>
+        <annotations>r0-24 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="25_496777" type="label" x="-33255.85" y="-72473.4" r="-90" s="8.897237777709961" class="body">
+      <textfield>
+        <x>-276.2</x>
+        <y>-181.6</y>
+        <text><![CDATA[Sharp (1964) en base a la trabajos previos de Markowitz y Tobin
+
+
+Mercado eficiente (expectativas homogeneas)
+
+
+Agentes múltiples y racionales
+
+
+Plantea un mercado en equilibrio]]></text>
+        <annotations>r0-64 { bullet: true; }
+r0-64 { align: left; }
+r66-110 { bullet: true; }
+r66-110 { align: left; }
+r112-143 { bullet: true; }
+r112-143 { align: left; }
+r145-177 { bullet: true; }
+r145-177 { align: left; }</annotations>
+        <w>552.4</w>
+        <h>363.15</h>
+      </textfield>
+    </object>
+    <object id="29_496777" type="label" x="-8789.55" y="-71351.05" r="-90" s="17.43858528137207" class="head">
+      <textfield>
+        <x>-76.75</x>
+        <y>-18.35</y>
+        <text><![CDATA[Metodología]]></text>
+        <annotations>r0-11 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="30_496777" type="label" x="4695.7" y="-72346.35" r="-90" s="17.43858528137207" class="head">
+      <textfield>
+        <x>-133.4</x>
+        <y>-18.35</y>
+        <text><![CDATA[Claves en la valuación]]></text>
+        <annotations>r0-22 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="31_496777" type="button" x="7263.25" y="-73917.6" r="-90" s="30.357955932617188">
+      <type>invisible</type>
+      <size>
+        <w>220</w>
+        <h>219.85</h>
+      </size>
+    </object>
+    <object id="32_496777" type="button" x="-13001.1" y="-25189.4" r="0" s="171.0207061767578" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>403.05</w>
+        <h>241.319395465995</h>
+      </size>
+    </object>
+    <object id="6_929427" type="image" x="-21848.35" y="-15604.8" r="0" s="88.49181365966797">
+      <source w="265" h="55">107023066.png<url>107023066.png</url>
+      </source>
+    <resource><id>
+        107023066
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/4/6/4eaaa5f9860dbbc712eb0744860cc96d4703d.png</url></resource></object>
+    <object id="2" type="label" x="-12999.9" y="-40795.45" r="0" s="167.31787109375" class="head">
+      <textfield>
+        <x>-165.45</x>
+        <y>-18.35</y>
+        <text><![CDATA[Relación entre CAPM y B&S]]></text>
+        <annotations>r0-25 { align: center; }</annotations>
+        <w>330.9</w>
+        <h>36.65</h>
+      </textfield>
+    </object>
+    <object id="0_634910" type="shape" x="-26006.6" y="-72940.15" r="0" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="1_634910" type="shape" x="-26238.85" y="-72937.95" r="-180" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="2_634910" type="shape" x="-25985.55" y="-72525.05" r="0" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="3_634910" type="shape" x="-26217.8" y="-72522.85" r="-180" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="4_634910" type="shape" x="-25478.75" y="-72662.05" r="0" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="5_634910" type="shape" x="-25711" y="-72659.85" r="-180" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="6_634910" type="shape" x="-25544.65" y="-71848.3" r="0" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="7_634910" type="shape" x="-25776.9" y="-71846.1" r="-180" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="8_634910" type="shape" x="-25821.65" y="-73692.45" r="0" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="9_634910" type="shape" x="-26053.9" y="-73690.2" r="-180" s="1.893198013305664" class="line5">
+      <geom type="arrow">
+        <sp>-33.28500183508881 0</sp>
+        <ep>33.28500183508881 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="0_646698" type="label" x="-7428.6" y="-72714.55" r="-90" s="8.897237777709961" class="body">
+      <textfield>
+        <x>-302.05</x>
+        <y>-51</y>
+        <text><![CDATA[Valuación por réplica (f = ∆S+B     o    dΠ = df - Δ dS)
+
+Ley de precio único]]></text>
+        <annotations>r0-57 { bullet: true; }
+r0-57 { align: left; }
+r58-77 { bullet: true; }
+r58-77 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="3_646698" type="label" x="-5883" y="-71364.85" r="-89.99999999999999" s="7.88790225982666" class="body">
+      <textfield>
+        <x>-172.8</x>
+        <y>-18.35</y>
+        <text><![CDATA[En tiempo discreto o continuo:]]></text>
+        <annotations>r0-30 { color: #194a99; }
+r0-30 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="5_646698" type="label" x="7207.15" y="-72626.75" r="-90" s="8.897237777709961" class="body">
+      <textfield>
+        <x>-291</x>
+        <y>-116.3</y>
+        <text><![CDATA[Un supuesto fuerte: Ausencia de oportunidades de arbitraje
+
+
+
+La ecuación de final de Black-Schole no incluye la probabilidad de suba de la acción]]></text>
+        <annotations>r0-59 { bullet: true; }
+r0-59 { align: left; }
+r62-146 { bullet: true; }
+r62-146 { align: left; }</annotations>
+        <w>581.95</w>
+        <h>232.55</h>
+      </textfield>
+    </object>
+    <object id="6_646698" type="label" x="-5070.7" y="-72852.05" r="-89.99999999999999" s="7.887902259826661" class="body">
+      <textfield>
+        <x>-72.5</x>
+        <y>-18.35</y>
+        <text><![CDATA[f  = ∆S  + B e ]]></text>
+        <annotations>r0-15 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="7_646698" type="label" x="-5039.75" y="-72634.05" r="-89.99999999999997" s="4.539406776428223" class="body">
+      <textfield>
+        <x>-60.25</x>
+        <y>-18.35</y>
+        <text><![CDATA[μ              μ]]></text>
+        <annotations>r0-16 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="8_646698" type="label" x="-5123.1" y="-73445" r="-89.99999999999997" s="4.539406776428223" class="body">
+      <textfield>
+        <x>-17.95</x>
+        <y>-18.35</y>
+        <text><![CDATA[r∆t]]></text>
+        <annotations>r0-3 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="9_646698" type="label" x="-4517.9" y="-70268.84999999999" r="-90" s="11.043062210083008" class="body">
+      <textfield>
+        <x>-6.05</x>
+        <y>-18.35</y>
+        <text><![CDATA[f]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="10_646698" type="label" x="-4028.45" y="-73453.9" r="-89.99999999999997" s="4.539406776428223" class="body">
+      <textfield>
+        <x>-17.95</x>
+        <y>-18.35</y>
+        <text><![CDATA[r∆t]]></text>
+        <annotations>r0-3 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="11_646698" type="label" x="-3950.8500000000004" y="-72859.05" r="-89.99999999999999" s="7.887902259826661" class="body">
+      <textfield>
+        <x>-72.5</x>
+        <y>-18.35</y>
+        <text><![CDATA[f  = ∆S  + B e ]]></text>
+        <annotations>r0-15 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="12_646698" type="label" x="-3913.25" y="-72641.2" r="-89.99999999999997" s="4.539406776428223" class="body">
+      <textfield>
+        <x>-60.1</x>
+        <y>-18.35</y>
+        <text><![CDATA[d              d]]></text>
+        <annotations>r0-16 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="16_646698" type="shape" x="-4779.85" y="-71329.9" r="-108.97051572472431" s="5.5215313925450795" class="line1">
+      <geom type="line">
+        <sp>-143.96743166787897 0</sp>
+        <ep>143.967431667879 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="14_646698" type="shape" x="-5067.05" y="-72164.4" r="-90" s="4.0660271644592285" class="poly1">
+      <geom type="circle">
+        <r>20</r>
+      </geom>
+    </object>
+    <object id="15_646698" type="shape" x="-3938.3999999999996" y="-72164.4" r="-90" s="4.0660271644592285" class="poly1">
+      <geom type="circle">
+        <r>20</r>
+      </geom>
+    </object>
+    <object id="20_646698" type="shape" x="-4491.9" y="-70507.95" r="-90" s="4.0660271644592285" class="poly1">
+      <geom type="circle">
+        <r>20</r>
+      </geom>
+    </object>
+    <object id="0_833600" type="label" x="-4685.05" y="-75073" r="-90" s="7.88790225982666" class="body">
+      <textfield>
+        <x>-115.95</x>
+        <y>-67.3</y>
+        <text><![CDATA[Black-Scholes:
+
+dΠ = df - Δ dS
+dS = μ S dt + σ S dW)]]></text>
+        <annotations>r0-15 { align: left; }
+r16-31 { align: left; }
+r31-52 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="7_929427" type="image" x="44219.35" y="-17806.65" r="-27.854584250768827" s="83.4531356716838">
+      <source w="281" h="53">107023067.png<url>107023067.png</url>
+      </source>
+    <resource><id>
+        107023067
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/9/2/e/dfd3a22e79ae1d543939445aad6e6bc2a453b.png</url></resource></object>
+    <object id="0_940172" type="image" x="47735.05" y="-11883.25" r="-27.854586052621546" s="88.49181722732716">
+      <source w="265" h="57">107023069.png<url>107023069.png</url>
+      </source>
+    <resource><id>
+        107023069
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/1/9/6/bd57b845e4460ac2fc198462e4eec519c11ee.png</url></resource></object>
+    <object id="1_940172" type="image" x="4456.35" y="-15604.8" r="0" s="95.17179870605469">
+      <source w="176" h="46">107023070.png<url>107023070.png</url>
+      </source>
+    <resource><id>
+        107023070
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/2/2/8/18dbe71165daeb68167e7cdace187f692b132.png</url></resource></object>
+    <object id="2_940172" type="label" x="-22799.75" y="-31821.85" r="0" s="88.34449768066406" class="body">
+      <textfield>
+        <x>-205.85</x>
+        <y>-34.65</y>
+        <text><![CDATA[Mediante CAPM se puede derivar
+      la PDE de Black-Scholes]]></text>
+        <annotations>r0-31 { bullet: true; }
+r0-31 { align: left; }
+r31-60 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="3_940172" type="label" x="-22127.9" y="-24073.05" r="0" s="88.34449768066406" class="body">
+      <textfield>
+        <x>-213.45</x>
+        <y>-34.65</y>
+        <text><![CDATA[El derivado como un portafolio de instrumentos simples:]]></text>
+        <annotations>r0-55 { bullet: true; }
+r0-55 { align: left; }</annotations>
+        <w>426.85</w>
+        <h>69.3</h>
+      </textfield>
+    </object>
+    <object id="4_940172" type="button" x="44643.2" y="-15735.85" r="-27.85458928328697" s="51.58027430611331" class="circle">
+      <type>circle</type>
+      <size>
+        <w>801.85</w>
+        <h>801.85</h>
+      </size>
+    </object>
+    <object id="13_940172" type="button" x="67206.45" y="23871.45" r="-27.817214424851503" s="187.85802886909914" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>366.3</w>
+        <h>219.3255334987593</h>
+      </size>
+    </object>
+    <object id="16_940172" type="image" x="68730.05" y="28670.85" r="-27.817222380279244" s="32.57302915430353">
+      <source w="1200" h="900">107030949.png<url>107030949.png</url>
+      </source>
+    <resource><id>
+        107030949
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/d/0/a/e50c9c54c8325fdac0505d02ba0bf9bf2ccec.png</url></resource></object>
+    <object id="6_940172" type="label" x="39227.35" y="-26694.85" r="-27.85458647754822" s="84.33036529853592" class="head">
+      <textfield>
+        <x>-134.35</x>
+        <y>-34.65</y>
+        <text><![CDATA[Valuación Utilizando Árboles Binomiales]]></text>
+        <annotations>r0-39 { align: center; }</annotations>
+        <w>268.7</w>
+        <h>69.3</h>
+      </textfield>
+    </object>
+    <object id="7_940172" type="shape" x="24426.55" y="-17456.35" r="3.5955064092836664" s="51.58026871970605">
+      <geom type="arrow">
+        <sp>-139.99999999999997 9.813534865483557</sp>
+        <ep>139.99999999999994 9.813534865483557</ep>
+        <b>-19.627069730967115</b>
+        <t>20</t>
+      </geom>
+    </object>
+    <object id="15_940172" type="label" x="60870.05" y="12001.2" r="-27.81721368732757" s="131.27901650782795" class="head">
+      <textfield>
+        <x>-139.35</x>
+        <y>-34.65</y>
+        <text><![CDATA[Resultados con Ambos Métodos]]></text>
+        <annotations>r0-28 { align: center; }</annotations>
+        <w>278.65</w>
+        <h>69.3</h>
+      </textfield>
+    </object>
+    <object id="24_940172" type="button" x="87331" y="62099.65" r="-27.817214424851503" s="187.85802886909914" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>366.3</w>
+        <h>219.3255334987593</h>
+      </size>
+    </object>
+    <object id="30_940172" type="image" x="89587.7" y="66482.05" r="-27.80429450607944" s="36.14475039749169">
+      <source w="1200" h="900">107033332.png<url>107033332.png</url>
+      </source>
+    <resource><id>
+        107033332
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/6/7/a255bd39a3d2f55e7f36d39df604958fb57a8.png</url></resource></object>
+    <object id="26_940172" type="label" x="79996.04999999999" y="48336.80000000001" r="-27.81721368732757" s="131.27901650782795" class="head">
+      <textfield>
+        <x>-139.35</x>
+        <y>-18.35</y>
+        <text><![CDATA[Análisis del Riesgo]]></text>
+        <annotations>r0-19 { align: center; }</annotations>
+        <w>278.65</w>
+        <h>36.65</h>
+      </textfield>
+    </object>
+    <object id="0_964224" type="button" x="107704.75" y="100787.75" r="-27.817214424851503" s="187.85802886909914" class="bracket">
+      <type>bracket</type>
+      <size>
+        <w>366.3</w>
+        <h>219.3255334987593</h>
+      </size>
+    </object>
+    <object id="2_964224" type="label" x="100369.75" y="87024.9" r="-27.81721368732757" s="131.27901650782795" class="head">
+      <textfield>
+        <x>-139.35</x>
+        <y>-18.35</y>
+        <text><![CDATA[Conclusiones]]></text>
+        <annotations>r0-12 { align: center; }</annotations>
+        <w>278.65</w>
+        <h>36.65</h>
+      </textfield>
+    </object>
+    <object id="0_1060786" type="label" x="74982.55" y="41005.55" r="-27.80742978065213" s="32.608596572211944" class="body">
+      <textfield>
+        <x>-542.25</x>
+        <y>-18.35</y>
+        <text><![CDATA[Error:    33%                                                                1%                                                                      0.007%]]></text>
+        <annotations>r0-155 { color: #f00; }
+r0-155 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="1_1060786" type="label" x="108674.45" y="102787.95" r="-27.807429333962926" s="91.3040717518646" class="body">
+      <textfield>
+        <x>-320.1</x>
+        <y>-165.25</y>
+        <text><![CDATA[Esto prueba la validez de B&S en el equilibrio general.
+
+El método de árboles binomiales es más costoso, aunque posee ventajas.
+
+El beta de los calls es siempre mayor o igual al de la acción subyacente. No ocurre lo mismo en los puts.
+
+El beta se incrementa cuando la acción esta out-of-the-money, o se reduce el tiempo al vencimiento.]]></text>
+        <annotations>r0-56 { bullet: true; }
+r0-56 { align: left; }
+r57-128 { bullet: true; }
+r57-128 { align: left; }
+r129-235 { bullet: true; }
+r129-235 { align: left; }
+r236-335 { bullet: true; }
+r236-335 { align: left; }</annotations>
+        <w>640.2</w>
+        <h>330.5</h>
+      </textfield>
+    </object>
+    <object id="2_1060786" type="shape" x="77264.4" y="79135.35" r="-27.805063012948228" s="11.64607610548798" class="line4">
+      <geom type="line">
+        <sp>65.03280158164866 0</sp>
+        <ep>-65.03280158164866 0</ep>
+        <t>8</t>
+      </geom>
+    </object>
+    <object id="3_1060786" type="label" x="75126.7" y="80218.8" r="-27.807428712415206" s="15.978212680796167" class="body">
+      <textfield>
+        <x>-84.55</x>
+        <y>-18.35</y>
+        <text><![CDATA[100% Acciones]]></text>
+        <annotations>r0-13 { color: #87234b; }
+r0-13 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="4_1060786" type="button" x="131047.4" y="145142.05" r="0" s="51.492286682128906" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="6_1060786" type="label" x="131082.4" y="145197.65" r="-7.026246336054095e-7" s="117.86111450195315" class="head">
+      <textfield>
+        <x>-144.35</x>
+        <y>-18.35</y>
+        <text><![CDATA[¿Preguntas?]]></text>
+        <annotations>r0-11 { align: center; }</annotations>
+        <w>288.65</w>
+        <h>36.65</h>
+      </textfield>
+    </object>
+    <object id="7_1060786" type="shape" x="121868.5" y="128737.45" r="59.999999757437166" s="51.49228630455286">
+      <geom type="arrow">
+        <sp>-140.00000000000003 9.813534865483565</sp>
+        <ep>140 9.813534865483565</ep>
+        <b>-19.62706973096713</b>
+        <t>20</t>
+      </geom>
+    </object>
+  </zui-table>
+  <path>
+    <o>0</o>
+    <o>5_496777</o>
+    <o>7_496777</o>
+    <o>11_496777</o>
+    <o>22_496777</o>
+    <o>23_496777</o>
+    <o>0_2729707</o>
+    <o>28_496777</o>
+    <o>31_496777</o>
+    <o>32_496777</o>
+    <o>4_940172</o>
+    <o>13_940172</o>
+    <o>24_940172</o>
+    <o>0_964224</o>
+    <o>4_1060786</o>
+  </path>
+  <style type="text/css"><![CDATA[
+@font-face
+{
+	src: url('OpenSans.swf');
+	fontFamily: body;
+}
+
+@font-face
+{
+	src: url('PTSans.swf');
+	fontFamily: strong;
+}
+
+@font-face
+{
+	src: url('OpenSans-B.swf');
+	fontFamily: head;
+}
+
+ZLabel
+{
+	padding: 1.2;
+}
+
+ZLabel.head
+{
+	color: #194a99;
+	fontFamily: head;
+}
+
+.line5
+{
+	color: #194a99;
+	gradEndColor: #194a99;
+	gradStartColor: #194a99;
+}
+
+.poly5
+{
+	borderColor: #194a99;
+}
+
+ZLabel.strong
+{
+	color: #000;
+	fontFamily: strong;
+}
+
+.line1
+{
+	color: #000;
+	gradEndColor: #000;
+	gradStartColor: #000;
+}
+
+.poly1
+{
+	borderColor: #000;
+}
+
+ZLabel.body
+{
+	color: #333;
+	fontFamily: body;
+}
+
+Background
+{
+	gradEnd: #fff;
+	gradStart: #fff;
+}
+
+Grid
+{
+	color: #ccc;
+}
+
+ZFrame.circle
+{
+	thickness: 7;
+	gradEndColor: #c5c3c3;
+	borderThickness: 0;
+	borderColor: #fff;
+	gradStartColor: #c5c3c3;
+}
+
+.line4
+{
+	color: #640f1e;
+	gradEndColor: #640f1e;
+	gradStartColor: #640f1e;
+}
+
+.poly4
+{
+	gradEndColor: #640f1e;
+	borderThickness: 0;
+	borderColor: #640f1e;
+	gradStartColor: #640f1e;
+}
+
+ZFrame.bracket
+{
+	thickness: 7;
+	gradEndColor: #c5c3c3;
+	borderThickness: 0;
+	borderColor: #fff;
+	gradStartColor: #c5c3c3;
+}
+
+.line2
+{
+	color: #efefef;
+	gradEndColor: #efefef;
+	gradStartColor: #efefef;
+}
+
+.poly2
+{
+	gradEndAlpha: 1;
+	gradStartAlpha: 0.9;
+	gradEndColor: #efefef;
+	borderThickness: 0;
+	borderColor: #efefef;
+	gradStartColor: #efefef;
+}
+
+ZFrame.roundrect
+{
+	radius: 0;
+	gradStartAlpha: 0.6;
+	borderThickness: 0;
+	gradStartColor: #e6e6e6;
+	gradEndAlpha: 0.7;
+	gradEndColor: #ccc;
+	borderColor: #fff;
+}
+
+ZPoly
+{
+	radius: 0;
+	thickness: 100;
+	gradEndAlpha: 0.7;
+	gradStartAlpha: 0.6;
+	lockTintAlpha: 0.6;
+	borderAlpha: 1;
+}
+
+ZCircle
+{
+	radius: 0;
+	thickness: 100;
+	lockTintAlpha: 0.6;
+	borderAlpha: 1;
+}
+
+ZArrow
+{
+	gradEndColor: #f00;
+	borderThickness: 0;
+	borderColor: #fff;
+	gradStartColor: #f00;
+}
+
+.line3
+{
+	color: #c5c3c3;
+	gradEndColor: #c5c3c3;
+	gradStartColor: #c5c3c3;
+}
+
+.poly3
+{
+	gradEndColor: #c5c3c3;
+	borderThickness: 0;
+	borderColor: #c5c3c3;
+	gradStartColor: #c5c3c3;
+}
+
+ZLine
+{
+	color: #c5c3c3;
+}
+
+ZCurveLine
+{
+	color: #f00;
+}
+
+ZMarker
+{
+	color: #ffff0d;
+	alpha: 0.3;
+}
+
+ZVideo
+{
+	padding: 1.2;
+}
+
+]]></style>
+  <hash>e072b8e043320daca6d20437fbae962e</hash>
+<sync><oid>adt_vwg924co</oid><hash>e072b8e043320daca6d20437fbae962e</hash></sync><config>l5RdFVuoQ3aflu8LzhPvlu73OevWio5b92a8nRZmQv5e7fFYF6YOs6MtuBGluJN4CJbySZ6BQBh0D8UP5abCdxmFVPO/tFCMUHm5l3st5N6EWXAbmx+3FAdaTuJA9Kvc/LWY5/qa1L+/bzwpLAGY6J/p62i3AdO8gxFo+LLGOYnBFDlL/aB8GEEY2AwSwHuxPZv+4T6YQcBf8vnsfqT6zXjp4qbcUEkZ/gBn/Iy2QvDWHu+ouaKnWj7Hi8/mYlMuaXi2A/gvqAijLnTyC1BXBUXUxv0M+JgBgYAJ2lF0/PEcntFQ8GK6cMwEbJxWPyMjy956HAljXFwy2mMRAC1aaA==</config></zuiprezi>

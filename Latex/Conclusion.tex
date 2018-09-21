@@ -1,0 +1,14 @@
+
+\chapter{Conclusión}\label{Conclusion}
+
+En los primeros capítulos se detalla las caracteristicas de los principales modelos para valuar acciones y opciones. El \textit{Capital Asset Pricing Model} se desarrolla en base a un supuesto de equilibrio de mercado, en donde todos los inversores comparten expectativas homogeneas y optimizan su portafolio eficientemente en función de estas. Por el otro lado, existen modelos de valuación de opciones que se basan en la idea de que no existen oportunidades de arbitraje. Este supuesto mucho más fuerte es independiente de las expectativas de los inversores y por ende cualquiera debería realizar la misma valuación.
+
+A lo largo del último capitulo se exploró la capacidad de valuación de opciones utilizando el primer modelo analizado. El primer resultado fue que CAPM es matemáticamente compatible con el modelo de Black-Scholes, es decir que realizando un portafolio replicante y valuandolo con CAPM conduce a la misma ecuación diferencial que esté último. Es este caso, la derivación de la ecuación diferencial de Black-Scholes es dependiente de CAPM, lo que sustenta la validez de la valuación mediante B\&S en el equilibrio general.
+
+La valuación a modo de ejemplo de una opción permitio verificar lo esperable (dada la equivalencia matemática), ambos modelos otorgan iguales resultados en la valuación de estos instrumentos. El problema de CAPM se presenta en términos prácticos, no teóricos, cuando para alcanzar una valuación precisa de una opción es necesaria la construcción de árbol con una enorme cantidad de nodos. Esto conlleva una gran cantidad de cálculos y de recursos necesarios que hacen que este proceso sea considerablemente lento e ineficiente.
+
+El \textit{beta} de las opciones en términos teóricos es siempre mayor que la de la acción subyacente para el caso de los \textit{calls} y en general mayor para los \textit{puts}. Esto se debe a que las opciones pueden ser entendidas como una compra apalancada del subyacente. Las pruebas que se realizaron mostraron que una opción \textit{at-the-money} puede tener un \textit{beta} 10 o 20 veces superior a la del subyacente fácilmente. Si bien esto no es una regla aplicable a todas las opciones, se puede observar la magnitud del riesgo que estas presentan.
+
+Por último, la evolución del \textit{beta} de la opción en funcion del tiempo y del precio del subyacente presenta un comportamiento exponencial cuando la opción se torna más \textit{out-of-the-money}, o se reduce el tiempo al vencimiento. Es por eso que las opciones \textit{out-of-the-money} y con un reducido tiempo al vencimiento presentan un riesgo decenas de veces mayor al del activo subyacente; por el otro lado, las opciones con características opuestas presentan un riesgo bajo aunque en general (según se trate de opciones de compra o venta) mayor al del subyacente.
+
+

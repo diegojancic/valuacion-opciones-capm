@@ -1,0 +1,80 @@
+
+\chapter{Herramientas matemáticas}\label{anexoherramientasbs}
+
+\section*{Lema de Ito}
+
+Para averiguar $ \tilde{S}(T) $ hay que resolver la ecuación diferencial, lo cual se resuelve es resulto por el Lema de Ito. El mismo sirve para resolver ecuaciones diferenciales estocásticas, que son diferenciables de segundo orden.
+
+Aplicando el teorema de Taylor para la función logarítmica $ f(S) $, donde $ S $ sigue un movimiento browniano geométrico:
+
+\begin{align}
+	f(S) &= ln(S) \label{defF}\\
+	dS &= \mu S dt + \sigma S dW \label{ecuacionDiferencialS}
+\end{align}
+
+Y por el lema de Ito, obtenemos:
+
+\begin{equation}
+	df = \frac{\partial f}{\partial S} dS + 
+		\frac{\partial f}{\partial t} dt + 
+		\frac{1}{2} \frac{\partial^2 f}{\partial S^2} (dS)^2 \label{ito-ftaylor}
+\end{equation}
+
+con $ \frac{\partial f}{\partial S} = \frac{1}{S} $ y $ \frac{\partial^2 f}{\partial S^2} = -\frac{1}{S^2} $. En la expansión de Taylor se consideran despreciables los términos de grado mayor a dos.
+
+Reemplazando $ dS $ y las derivadas parciales en la ecuación \eqref{ito-ftaylor} se llega a que:
+
+\[ df = (\mu - \frac{\sigma^2}{2}) dt + \sigma dW \]
+
+Por último reemplazamos $ f $ por su definición \eqref{defF} y obtenemos:
+
+\begin{equation}
+	d \log{S} = (\mu - \frac{\sigma^2}{2}) dt + \sigma dW \label{ito-eqdiferencial}
+\end{equation}
+
+
+Ahora, para calcular $S(T)$ debemos resolver la ecuación diferencial \eqref{ito-eqdiferencial}. Integrando a ambos lados de la ecuación entre 0 y $ t $:
+
+\begin{equation}
+	\int_0^t \,\mathrm{d}\log S = 
+		\int_0^t \left(\mu - \frac{\sigma^2}{2}\right) \,\mathrm{d}t +
+		\int_0^t \sigma \,\mathrm{d}W \label{ito-integraldefinida}
+\end{equation}
+
+Ahora, si resolvemos las integrales directas y aplicando el teorema de Newton-Leibniz, veremos que del último término surge $ W_0 $. Como $ \sigma W_0 $ es una variable aleatoria en el momento cero, se puede omitir ya que el término estocastico en el momento inicial podría considerarse nulo; de otra forma, cualquier variación puede considerarse incluida en el término deterministico. $ W_0 $ puede ser reemplazado por su definición \eqref{ito-dw}, de forma que la ecuación \eqref{ito-integraldefinida} se convierte en:
+
+\begin{equation}
+	\log \tilde{S}(T) - \log S(0) = 
+		\left(\mu - \frac{\sigma^2}{2}\right) T +
+		\sigma \sqrt{T} Z
+\end{equation}
+
+Dado que $ Z $ es una variable aleatoria con distribución normal estandar, se puede ver que:
+
+\begin{subequations}
+\begin{align}
+	\log \left( \frac{\tilde{S}(T)}{S(0)} \right) &= N\left[
+		\left(\mu - \frac{\sigma^2}{2}\right) T;
+		\sigma^2 T
+		\right] \label{distribucionRendimiento}\\
+	\log \tilde{S}(T) &= N\left[
+		\log S(0) + \left(\mu - \frac{\sigma^2}{2}\right) T;
+		\sigma^2 T
+		\right] \label{distribucionPrecio}
+\end{align}
+\end{subequations}
+
+En \eqref{distribucionRendimiento} se puede ver que la rentabilidad en tiempo continuo sigue una distribución normal. El precio del subyacente, en cambio, tiene una distribución log-normal, razon por la cual el precio nunca puede ser menor a cero. Si la distribución del precio fuese normal, podría ocurrir que el precio en algún momento tomase un valor negativo, lo cual sería incorrecto.
+
+Por último, aplicando el operador $e$ en ambos lados de la ecuación \eqref{distribucionRendimiento}, y reacomodando llegamos a la formula final que muestra el valor del subyacente al final del periodo $T$:
+
+\begin{equation}
+	S_T = S_0 e^{\left(\mu-\frac{\sigma^2}{2}\right)T+\sigma \sqrt{T} Z} \label{formulaST-desde0}
+\end{equation}
+
+Considerando que esta formula es valida para cualquier momento durante la existencia de la opción, podríamos extender la fórmula para cualquier momento $0 \leq t \leq T$. Llamamos $\tau$ al tiempo de vida remanente de la opción, por lo que $\tau=T-t$. Entonces, generalizando la ecuación \eqref{formulaST-desde0}, obtenemos:
+
+\begin{equation}
+	S_T = S_t e^{\left(\mu-\frac{\sigma^2}{2}\right)\tau+\sigma \sqrt{\tau} Z} \nonumber
+\end{equation}
+

@@ -1,0 +1,282 @@
+
+
+\chapter{Modelos de valuación de opciones}
+
+\section{El nacimiento de nuevo mercado}
+
+Desde 1973, los contratos de opciones son comerciados a diario en los mercados públicos, siendo el más importante en términos de volumen negociado el \textit{Chicago Board or Options Exchange} (2011)\nocite{cboe}; mercado en el que actualmente se negocian millones de contratos diariamente. Dicho año coincide con el desarrollo de un modelo matemático para la valuación de opciones, realizado por Fisher Black, Myron Scholes y Robert Merton. El desarrollo del mismo fue razón de importante crecimiento en el mercado de opciones, y fue de gran importancia para el desarrollo de la ingeniería financiera en los últimos años \cite{hull}.
+
+El crecimiento de este mercado se dio en gran medida a causa del desarrollo de este método para valuar opciones. Actualmente sigue siendo utilizado en gran medida en el ámbito profesional y académico. De ahí, la importancia que tiene a la hora de valuar opciones.
+
+En este capítulo se desarrolla los conceptos del modelo de Black-Scholes-Merton (o Black-Scholes) para la valuación de opciones europeas sobre acciones que no pagan dividendos.
+
+\section{Características de las opciones}
+
+El valor de una opción depende de varios factores. Debido a que estas pueden ser entendidas como seguros ante el alza o ante la baja en el precio del subyacente, se puede realizar un primer acercamiento a las variables involucradas. Al ser un seguro, cuanto mayor sea el riesgo de que este sea cobrado, mayor será la prima que se deberá pagar para adquirirlo.
+
+En el caso de una opción de compra sobre una acción, por ejemplo, el valor de la opción en el momento en el que se ejerce esta dado por el precio de la acción menos el precio de ejercicio. Claro que el valor del seguro siempre es positivo, por lo que en caso de que el precio de ejercicio sea mayor al precio de la opción al momento de ejercicio, el valor del contrato será cero. Si esto no ocurriese, entonces cualquier inversor compraría la acción subyacente directamente al precio de mercado en vez de ejercer la opción. Formalmente, el \textit{payoff} de una opción de compra esta dado por $ max(S_T - X ; 0) $, siendo $ S_T $ el precio de la acción el momento final, y $ X $ el precio de ejercicio. Dicho esto, podemos suponer que el precio de la acción afecta directamente al valor de la opción. Lo contrario ocurrirá con el precio de ejercicio, ya que cuanto menor sea este, mayor será el precio del \textit{call}.
+
+El tiempo es otro factor del cual dependerá lógicamente el valor de la opción. Dado que los \textit{calls} son seguros ante la baja en el precio de una acción, cuanto mayor sea el plazo del seguro, mayor deberá ser el precio de este. Algo similar ocurre con la volatilidad de las acciones. Cuando el precio de una acción es muy volátil, existe mayor riesgo de que la opción termine \textit{in the money} ($ S_T > X $), por lo que el valor del seguro deberá necesariamente ser mayor.
+
+Existe también otro componente que determina el valor de una opción: la tasa de interés libre de riesgo. Esto se debe a que durante el periodo de validez de un contrato, una de las partes esta posiblemente obligada a pagar el valor asegurado. Durante este tiempo que dura el contrato, hay un monto de dinero que debe ser mantenido para asegurar el pago eventual de la opción. Por ese monto, el emisor de la opción deseará cobrar un interés. Dicho interés es muy cercano a la tasa libre de riesgo en la práctica debido al tamaño de los participantes de mercado. 
+
+
+
+\section{Modelo binomial para la valuación de opciones}
+
+El método de árboles binomiales provee una explicación intuitiva para la valuación de opciones. Sin embargo, como se verá más adelante, la implementación en la práctica es mucho más compleja si no se dispone de sistemas computacionales. 
+
+Si se toma como primer supuesto que los participantes en el mercado son racionales, se puede suponer que cualquiera de estos aprovecharía una oportunidad de arbitraje. Esto permitiría obtener una ganancia segura sin inversión inicial, lo que haría de esta oportunidad algo que cualquier inversor quisiera aprovechar. Este es un supuesto débil, por lo que se puede considerar cierto en mercados desarrollados donde existen inversores intentado aprovechar dichas oportunidades. Por el otro lado, las implicancias de este supuesto son muy útiles. Si se pueden encontrar dos activos o portafolios que tengan el mismo flujo de fondos, para suprimir la existencia de oportunidades de arbitraje, estos dos deben tener el mismo precio de mercado.
+
+Asimismo, es posible llevar la ley del precio único\footnote{La ley del precio único postula que dos activos iguales comercializados en mercados con libre movimiento de capitales deben tener el mismo precio \cite{lawofoneprice}.} a este caso. Si existen dos activos, o dos portafolios, que posean el mismo \textit{payoff} y exactamente el mismo riesgo, entonces deben tener el mismo precio.
+
+Dicho esto, es posible replicar una opción utilizando el activo subyacente y un préstamo. En el caso más simple supongamos que el hacemos el análisis en tiempo discreto y que tomamos un solo periodo. El subyacente $S$ puede tener solamente dos estados al cabo de ese periodo. Si el subyacente experimenta una ganancia, esta será igual a $\mu$, y si experimenta una baja será de magnitud $d$.
+
+De la misma forma la opción $f$ puede tener solo dos resultados posibles: $f_\mu$ si el precio de la acción sube y $f_d$ si el precio baja. Entonces es posible armar un portafolio entre $S$ y un préstamo $B$ de forma de igualar los \textit{payoffs} a los del derivado.
+
+\begin{align}
+	f_{\mu} &= \Delta S \mu + B e^{r \Delta t} \label{igualpayoff1} \\
+	f_d &= \Delta S d + B e^{r \Delta t} \label{igualpayoff2}
+\end{align}
+
+Donde $\Delta$ es la cantidad del subyacente que posee la cartera y $B$ es la porción de deuda incluida en el momento cero. Despejando $\Delta$ y $B$ de las ecuaciones \eqref{igualpayoff1} y \eqref{igualpayoff2} se obtiene:
+
+\begin{align}
+	\Delta &= \frac{C_\mu - C_d}{S (\mu - d)} \label{portReplDelta} \\
+	B &= \frac{\mu C_d - d C_\mu}{(\mu - d) e^{r \Delta t}} \label{portReplB}
+\end{align}
+
+Por lo tanto, se toma un préstamo de un monto igual $B$ a una tasa libre de riesgo $r$ por un tiempo $\Delta t$. Con ese préstamo más una capital propio se adquieren $\Delta$ acciones. Como la cartera recién construida por $B$ y $\Delta S$ debe tener necesariamente el mismo precio que el derivado, en ausencia de oportunidades de arbitraje, este será:
+
+\begin{align}
+	f = \Delta S + B \label{portRepl}
+\end{align}
+
+Esta es la idea que se aplica en los métodos para la valuación de opciones, si existen dos activos exactamente iguales entonces deben tener el mismo precio. En este caso los dos activos se encuentran igualados en la ecuación \eqref{portRepl}.
+
+Arriba se presentó el caso del árbol binomial de un paso. Para aplicar este método correctamente es necesario aplicar recursivamente el árbol para una cantidad grande de pasos, de forma que el error de la réplica converja a cero. A medida que la cantidad de pasos aumenta, el intervalo de tiempo también disminuye, por lo que a continuación se desarrolla extensamente un modelo que aplica la misma idea de no arbitraje, pero en tiempo continuo.
+
+
+\section{El modelo probabilístico}
+
+Los modelos de valuación de opciones se basan en el argumento de no arbitraje, el cual muestra que una opción puede ser replicada con gran precisión mediante una posición en el subyacente combinada con un préstamo o un depósito a la tasa libre de riesgo. En el caso de un \textit{call} esto quiere decir comprar acciones pidiendo un préstamo y realizando una pequeña inversión adicional. Este procedimiento se explicó brevemente en la sección anterior y se seguirá en el siguiente capitulo.
+
+El argumento de no arbitraje permite hallar el precio de la opción sabiendo que este será único e independiente de la expectativas de los agentes de mercado. De no ser así, cualquier inversor podría replicar la opción tomando posiciones en el activo subyacente y un préstamo (o depósito), y así obtener una ganancia positiva sin inversión inicial.  Aún cuando esto es cierto, es necesario suponer un comportamiento en el precio de los activos, para así poder conocer los posibles \textit{payoffs} del instrumento y poder descontarlos al momento inicial. En los modelos discretos se le asigna un retorno esperado y una volatilidad especifica, en el caso de los modelos en tiempo continuo conocer la función de movimiento es necesario.
+
+Debido a que el modelo obtiene en primer medida los \textit{payoffs} al vencimiento del contrato, no se tiene en cuenta la opcionalidad en otros momentos del periodo. Por este motivo, el modelo de Black-Scholes solo es aplicable a opciones de tipo europeo.
+
+Si el mercado es eficiente, al menos en su sentido débil\footnote{La hipótesis de eficiencia en la forma débil indica que toda la información pasada de los precios esta contenida en el precio actual de mercado, por lo que precio futuro de las acciones no será sistemáticamente igual a los precios pasados.}, entonces el precio futuro de una acción no dependerá en absoluto de los precios pasados de esta. De esta forma no hay razones para suponer que el precio futuro de la acción tendrá un alza o una baja extraordinaria, sino que en cambio tendrá una evolución aleatoria impredecible con exactitud. A continuación se explica el comportamiento que se le atribuye a los precios de las acciones en tiempo continuo.
+
+\section{Procesos estocásticos}
+
+Para entender que el comportamiento que sigue el precio de una acción, primero es necesario hacer una introducción a los distintas clases de procesos estocásticos. Se define proceso estocástico en tiempo continuo como a una sucesión infinita de variables aleatorias $ \{X_t ; t \in \mathbb{R}_{\geq0}\} $ en un espacio probabilístico \cite{rosenthal}.
+
+Análogamente, en tiempo discreto tendríamos:
+
+\[ \{ \tilde{S_1}; \tilde{S_2}; \tilde{S_3}; \ldots; \tilde{S_T} \} \]
+
+Cada una de estas variables representa el precio del subyacente en un momento dado del tiempo. Cada muestra del proceso en su conjunto representa un posible camino del precio de la acción en el tiempo. El hecho de que las variables sean estocásticas implica que estás tendrán un valor aleatorio, y cada valor estará condicionado a la distribución que se le atribuya a la misma.
+
+\subsection{Procesos de Markov}
+
+Se conoce como proceso de Markov a aquellos procesos estocásticos en el cual el valor futuro de una variable solo depende del valor actual de la misma. Esto esta estrechamente ligado al supuesto de eficiencia débil en el mercado, como se explico anteriormente.
+De esta forma, decimos que $ S_{t} $ depende de $ S_{t-1} $, pero no de $ S_{t-n} $ si $n>1$. Debido a la dependencia de la variable con el periodo anterior, la varianza de las mismas se considera aditiva \cite{hulleng}. De forma que la varianza del cambio en un periodo, será mayor cuanto mayor sea dicho periodo. Esto es entendible ya que se espera un cambio mayor en el precio de una acción en el largo plazo, que en un periodo muy corto de tiempo.
+
+\subsection{Procesos Wiener}
+
+Siguiendo con la descripción de los procesos estocásticos, los procesos Wiener (o Movimientos Brownianos) son a su vez procesos de Markov en donde cada variable aleatoria sigue una distribución normal con media 0 y varianza 1, y los \textit{shocks} en el tiempo no son dependientes de los anteriores. Cualquier proceso que siga este comportamiento será un proceso Weiner, en tiempo continuo se puede definir una variable $W$, en donde los cambios estén descriptos por:
+
+\begin{equation}
+	\Delta W = Z \sqrt{\Delta t} \label{wiener}
+\end{equation}
+
+Donde $Z$ es una variable normalmente distribuida $N(0;1)$, y $\Delta t$ es un periodo de tiempo pequeño en tiempo discreto. En tiempo continuo, $\Delta t \rightarrow \infty$. De esta forma, la esperanza del cambio en un periodo de tiempo $T$ será cero, y su varianza será a su vez $T$\footnote{Para una demostración rigurosa véase Rosenthal (2006).}; estrictamente:
+
+\begin{align}
+E[\Delta W] &= E[Z \sqrt{\Delta t}] = \sqrt{\Delta t} E[Z] = 0 \nonumber\\
+V[\Delta W] &= E[(\Delta W - \overline{\Delta W})^2] = E[(\Delta W - 0)^2] = E[(Z \sqrt{\Delta t})^2] \nonumber\\
+	&= E[Z^2] \Delta t =  V[Z] \Delta t = \Delta t\nonumber
+\end{align}
+
+En el caso del precio de los activos, se pueden observar dos características que difieren de un movimiento browniano. Primero, la volatilidad es constante e igual al tiempo, lo que provocaría que todas las acciones tengas igual volatilidad. Segundo, el proceso mostrado no presenta crecimiento ($E[\Delta W]=0$). En el mercado, las acciones presentan diferente volatilidad, y un crecimiento esperado a lo largo del tiempo, lo cual hacen del proceso presentado en \eqref{wiener} una incorrecta representación de la realidad.
+
+
+\subsection{Proceso de Ito}
+
+Es posible extender la ecuación del proceso de Wiener \eqref{wiener} para obtener un movimiento más cercano al observado en los precios de las opciones. Si se agrega un término no estocástico, o determinístico, se puede dar a la serie un resultado esperado distinto de cero. En particular, se puede definir una función $a$ que dependa del valor anterior de la serie y del tiempo. Visto en términos discretos, el comportamiento del término determinístico estará dado por:
+
+\begin{equation}
+	S_{t+1} = a(S_{t};t) (S_{h+1} - S_{h})
+\end{equation}
+
+Siendo $S$ el valor de la variable en un momento de tiempo $t$ en el proceso. La función $a(S_{t};t)$ determina el \textit{drift} o la tendencia que, en términos de variación de precios, deberá corresponderse en principio con el retorno esperado de la acción. Tomando ahora la ecuación \eqref{wiener} en tiempo continuo y multiplicando el término estocástico por una función $b(S_{t};t)$, se llega a:
+
+\begin{equation}
+	dS = a(S;t) dt + b(S;t) Z \sqrt{dt} \label{ito-dw}
+\end{equation}
+
+Cuando las funciones $a(S,t)$ y $b(S,t)$ son constantes y por lo tanto independientes de $S$ y $t$, a estos procesos se los conoce como Wiener generalizados. Un proceso de estas características presentará un valor esperado de $E[dS] = a dt$ con una varianza de $V[dS] = b^2 dt$. De esta forma, el incremento será constante y generalmente positivo para el precio de un activo, y la varianza será proporcional al tiempo. Esto último lleva a que luego de un periodo $T$ la varianza será $b^2 T$, lo cual es entendible económicamente ya que la posible variación a 2 años será lógicamente mayor a la variación esperada en un plazo corto de tiempo.
+
+
+
+\subsection{Movimiento browniano geométrico}
+
+Al comportamiento del precio de las acciones se le atribuye un movimiento conocido como \textit{Geometric Brownian Motion}, el cual es un caso especifico del último visto. El primer paso es definir $a(S;t) = \mu S$, de forma de lograr que el término determinístico dependa de $\mu$, una constante igual al rendimiento esperado de la acción. De la misma forma, se puede definir a $b(S;t)$ como $\sigma S$ para que sea dependiente del precio de la acción. 
+
+Al multiplicar las constantes $\mu$ y $\sigma$ por $S$, se obtiene como resultado un movimiento diferencial relativo y proporcionado al precio de la acción en ese momento. Por ejemplo, una acción en un momento particular puede valer 100 dolares, mientras otra de una empresa comparable\footnote{Si bien es prácticamente imposible que existan 2 empresas perfectamente comparables, se asumen 2 acciones con el mismo nivel de riesgo con fines explicativos.} puede valer sólo 10. Si ambas experimentan una suba del 10\%, la primera valdrá 110 dolares, mientras la segunda valdrá 11. La suba en ambos casos fue proporcional al precio de la acción, de no ser asi la ganancia para un inversor hubiese sido mucho mayor en la segunda.
+
+De esta forma, el proceso que sigue el precio de una acción quedaría:
+
+\begin{equation}
+dS = \mu S dt + \sigma S dW \label{brownianmotion}
+\end{equation}
+
+Donde $ \mu $ es la rentabilidad esperada de la acción, $ S $ es el precio de la acción, y $ dt$ es el diferencial tiempo.
+
+
+
+\section{El modelo de Black-Scholes-Merton}
+
+\subsection{Supuestos}
+
+Uno de los supuestos en los que se basa este modelo es que el precio de las acciones sigue la ecuación de movimiento descripta por \eqref{brownianmotion}. La resolución de dicha ecuación diferencial esta dada por el lema de \textit{Ito}, y lleva a que el precio de la acción en el momento $T$, tenga un valor dado por la siguiente expresión\footnote{Véase anexo \ref{anexoherramientasbs} en la página \pageref{anexoherramientasbs}.}:
+
+\begin{align}
+	S_T &= S_t e^{\left(\mu-\frac{\sigma^2}{2}\right)\tau+\sigma \sqrt{\tau} Z} \label{formulaST}\\
+	\mathrm{con}\;\; \tau &= T-t \nonumber
+\end{align}
+
+A su vez, existen otros supuestos utilizados en la derivación de la ecuación diferencial de Black-Scholes\cite{black1973}:
+
+\begin{itemize}
+\item La tasa de interés libre de riesgo es conocida y constante durante el plazo de validez de la opción.
+\item El precio de la acción sigue un \textit{random walk} en tiempo continuo con una varianza proporcional a la raíz del precio de la acción. Por lo tanto, la distribución de los posibles precios de la acción siguen una distribución log-normal. La varianza del retorno del subyacente es constante.
+\item La acción no paga dividendos\footnote{El supuesto de que el subyacente no paga dividendos no es estrictamente necesario, pero es utilizado para simplificar el cálculo.}.
+\item La opción es de tipo europeo, por lo que puede ser ejercida solo al vencimiento.
+\item No hay costos de transacción al comprar o vender acciones.
+\item Es posible tomar prestado cualquier fracción del precio de una acción, a la tasa libre de riesgo de corto plazo.
+\item No hay penalidad por realizar operaciones en corto.
+\end{itemize}
+
+\subsection{Distribución de rendimientos y precios}
+
+El segundo supuesto mencionado se deriva implícitamente de la ecuación estocástica utilizada. Si se toma la solución a la ecuación diferencial hallada en \eqref{formulaST} y se aplica $ln$ en ambos lados, se llega a que:
+
+\[
+	ln \frac{S_T}{S_0} \sim N\left[\mu-\frac{\sigma^2}{2} ; \sigma^2 T \right]
+\]
+
+Siendo $N(m;d)$ una distribución normal con media $m$ y varianza $d$\cite[p.278]{hulleng}. Esto implica que los rendimientos en tiempo continuo siguen una distribución normal, de forma que el precio de la acción sigue una distribución log-normal. La esperanza del precio estará dado por: 
+
+\[ E[S_T] = S_0 e^{\mu T} \nonumber \]
+
+El retorno en tiempo continuo durante todo el periodo de validez de la opción (desde cero a $T$), estará dado por $x$ de forma que\cite{hulleng}:
+
+\begin{align}
+	S_T &= S_0 e^{xT} \label{esperanzast} \\
+	x &=  \frac{1}{T} ln \frac{S_T}{S_0} \sim N\left[ \mu - \frac{\sigma^2}{2} ; \frac{\sigma^2}{T} \right] \nonumber
+\end{align}
+
+La formula de $x$ surge de despejarla de la ecuación \eqref{esperanzast}. La distribución del retorno en tiempo continuo por lo tanto es normal, con una media $\mu - \sigma^2/2$ y varianza $\sigma^2/T$.
+
+\subsection{El precio de una opción}
+
+En ausencia de oportunidades de arbitraje el precio de una opción en el momento cero estará dado inequívocamente por la distribución de \textit{payoffs} al término del contrato, descontados a la tasa libre de riesgo hasta el momento cero\footnote{Esto surge de la existencia de la probabilidad $Q$ neutral al riesgo, resultado de la existencia de una martingala equivalente. Para una comprobación rigurosa véase \cite[p.140]{oksendal}.}:
+
+\begin{align}
+	c &= e^{-rT}E^Q[(S_T-X)^+] \label{ecuacionBasicaCall} \\
+	p &= e^{-rT}E^Q[(X-S_T)^+]
+\end{align}
+
+Siendo $c$ el precio de una opción de compra europea (\textit{call}) y $p$ el precio de una opción de venta europea (\textit{put}). $X$ es el precio de ejercicio de cada opción, de forma que $(S_T-X)^+$ y $(X-S_T)^+$ representan las funciones de pagos de ambas opciones en el momento $T$.
+
+Existen diversas formas de resolver la ecuación \eqref{ecuacionBasicaCall}\cite{frouah-formula}. En este trabajo se realiza la integración directa de la misma.
+
+Como se mencionó anteriormente, en un mundo neutral al riesgo $ \mu = r_f $ debido a la existencia de una martingala equivalente que hace de la solución de B\&S la única bajo la cual no existen oportunidades de arbitraje. $ r_f $ es la tasa de interés libre de riesgo a la cual los agentes del mercado pueden tomar prestado. Por simplicidad de notación, la siguiente derivación se realiza desde cero hasta $T$, pero podría ser fácilmente generalizada desde $0 \leq t < T$ hasta $T$.
+
+\begin{equation}
+	c = \underbrace{ e^{-r T} E^Q\left[S_T * \one{S_T > X}\right] }_{I} - 
+	    \underbrace{ e^{-r T}E^Q\left[X * \one{S_T > X}\right] }_{II} \label{ecuacionBS1}
+\end{equation}
+
+La ecuación \eqref{ecuacionBS1} presenta dos términos que deben ser resueltos. En el primero, $ S_T $ puede ser reemplazado por su definición \eqref{formulaST}. Entonces, el primer término quedaría:
+
+%% Quizas faltan pasos para despejar Yt abajo del 1
+
+\begin{align}
+	= S_0 e^{-r T} E^Q\left[e^{Y_T} * \one{Y_y > \ln \left( \frac{X}{S_0} \right)} \right] \\
+	\mathrm{con}\;\; Y_t = \left(r-\frac{\sigma^2}{2}\right) T + \sigma \sqrt{T} Z
+\end{align}
+
+Dado que la esperanza puede ser descripta por la función de densidad de una 
+normal\footnote{Si $Y$ es una variable aleatoria con distribución normal, entonces la función de densidad será $ P(a \leq Y \leq b) = \int_a^b{\frac{1}{\sqrt{2\pi}} e^{-1/2 (\frac{y-\overline{y}}{\sigma})^2} dy} $. Adaptado de Rosenthal (2006).}, 
+se puede reescribir de la siguiente forma:
+
+\begin{equation}
+	= S_0 e^{-r T} \int_{\ln(X/S_0)}^\infty{e^{y_t} \frac{1}{\sqrt{2 \pi \sigma^2 T}} 
+		e^{-1/2 \left( \tfrac{y_t - (r - \sigma^2/2) T}{\sigma \sqrt{T}} \right)^2 } dy_t}
+\end{equation}
+
+Si se cambia la variable de integración por $h$, de forma que $h=(y_t - (r-\sigma^2/2) T) / \sigma\sqrt{T}$ y se cambian los limites de integración para mantener la igualdad, se obtiene:
+
+\begin{equation}
+	= S_0 e^{-r T} \int_{\tfrac{\ln(X/S_0) - (r-\sigma^2/2) T}{\sigma \sqrt{T}}}^\infty{
+		e^{(r-\sigma^2/2) T + \sigma \sqrt{T} h}
+		\frac{1}{\sqrt{2 \pi}} e^{-1/2 h^2} dh} \label{ecuacionBS2}
+\end{equation}
+
+Al reacomodar la primer expresión en la integral de la ecuación \eqref{ecuacionBS2}, se pueden agrupar los términos elevados a la $e$ de forma de obtener un cuadrado un binomio:
+
+
+\begin{equation}
+	= S_0 \int_{\tfrac{\ln(X/S_0) - (r-\sigma^2/2) T}{\sigma \sqrt{T}}}^\infty{
+		\frac{1}{\sqrt{2 \pi}} e^{-1/2 (h-\sigma \sqrt{T})^2} dh} \label{ecuacionBS3}
+\end{equation}
+
+La ecuación \eqref{ecuacionBS3} puede ser perfectamente resuelta computando la integral entre los limites de la misma, sin embargo por razones de practicidad es conveniente transformarla para obtener la función de densidad característica de una normal $N(0;1)$. Al hacer un cambio de variable, de forma que sea $Z = h - \sigma \sqrt{T}$ y $dZ = dh$, se obtiene:
+
+\begin{equation}
+	= S_0 \int_{\tfrac{\ln(X/S_0) - (r+\sigma^2/2) T}{\sigma \sqrt{T}}}^\infty{
+		f(Z) dZ} \label{ecuacionBS4}
+\end{equation}
+
+Siendo $f(Z) = \frac{1}{\sqrt{2\pi}} e^{-1/2 Z^2}$. Invirtiendo los limites de integración se obtiene la probabilidad acumulada de una función normal, para la cual se usará la notación de $N(x)$, siendo $x$ el limite superior de integración. Por último, el término resulto queda definido como:
+
+\begin{align}
+	&= S_0 N(d)\\
+	&\mathrm{con}\;\; d = \frac{\ln(S_0/X) + (r+\sigma^2/2) T}{\sigma \sqrt{T}} \label{bsparte1}
+\end{align}
+
+Regresando a la ecuación \eqref{ecuacionBS1}, queda por resolver el segundo término, que puede ser reordenado para tener:
+
+\[
+= X e^{-rT} E^Q\left[\one{S_T > X}\right] = X e^{-r T} Q\left[S_T > X\right]
+\]
+
+Siendo $Q[S_T > X]$ la probabilidad neutral al riesgo de que $S_T > X$. Reemplazando $S_T$ por la función de movimiento de las acciones, dada por \eqref{formulaST}, y despejando $Z$, se llega a que:
+
+\[
+	= X e^{-rT} Q\left[ Z < \frac{ln(S_0/X) + (r-\sigma^2/2) T}{\sigma \sqrt{T}} \right]
+\]
+
+Al despejar $Z$ llegamos directamente a que la parte de la derecha de la inecuación dentro de $Q$, representa el límite superior de una función de probabilidad acumulada. Por lo tanto se puede notar como:
+
+\[
+	= X e^{-rT} N\left[ \frac{ln(S_0/X) + (r-\sigma^2/2) T}{\sigma \sqrt{T}} \right] \label{bsparte2}
+\]
+
+Donde el límite de integración es igual a $d-\sigma \sqrt{T}$. Por último, reemplazando \eqref{bsparte1} y \eqref{bsparte2} en la ecuación original \eqref{ecuacionBS1}, se obtiene:
+
+
+\begin{align}
+	c &= S_0 N(d) - X e^{-rT} N(d-\sigma \sqrt{T}) \label{ecuacionBSCall}\\
+	\mathrm{con}\;\; d &= \frac{\ln(S_0/X) + (r+\sigma^2/2) T}{\sigma \sqrt{T}} \nonumber
+\end{align}
+
+La ecuación \eqref{ecuacionBSCall} es el resultado hallado por Black, Scholes y Merton para la valuación de opciones europeas. Es importante resaltar que detrás de este resultado esta el concepto de no arbitraje. Ya esta ecuación no se cumpliese un inversor podría comprar una acción con un préstamo a la vez de una opción y así obtener una ganancia con inversión inicial nula. La metodología para arbitrar en el mercado de opciones se presenta en la próxima sección, sin embargo cabe destacar los aspectos importantes de este resultado:
+
+\begin{itemize}
+\item Si se supone que los agentes de mercado son racionales, cualquiera de estos querría explotar una oportunidad de arbitraje, por lo haría variar los precios de mercado hasta que la oportunidad desaparezca. En mercados desarrollados si bien existen oportunidades de arbitraje, tienden a desaparecer rápidamente.
+\item La ecuación \eqref{ecuacionBSCall} no incluye la probabilidad de una suba en el precio de la acción ($\mu$). Por esta razón, el resultado obtenido es independiente de las expectativas de los agentes de mercado, de forma que todos llegarán al mismo precio de la opción, más allá de sus preferencias o expectativas.
+\end{itemize}
+

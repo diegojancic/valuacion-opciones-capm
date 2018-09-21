@@ -1,0 +1,237 @@
+
+
+\addcontentsline{toc}{part}{Anexos}
+\appendix
+
+\chapter{Código fuente árbol binomial con CAPM}\label{anexocodigoapp}
+% \addcontentsline{toc}{chapter}{Anexo I: Código fuente de la aplicación}
+
+
+En la figura \eqref{CodigoApp} se presenta el código fuente del programa desarrollado para evaluar el árbol binomial mediante CAPM.
+El mismo fue desarrollado en C\#.NET y puede ser compilado usando el \textit{SDK} de \textit{.NET} o de \textit{Mono}. El código para evaluar multiples veces el árbol y generar los gráficos incluidos en este trabajo se omite por razones de simplicidad.
+
+% http://texblog.wordpress.com/2008/04/02/include-source-code-in-latex-with-listings/
+
+\lstset{numbers=left, stepnumber=1, basicstyle=\footnotesize, frame=single, language=C++, 
+	breaklines=true, breakatwhitespace=true, tabsize=2, showstringspaces=false,
+	caption=Código fuente para el cálculo de un árbol binomial utilizando CAPM.,
+	label=CodigoApp}
+
+\begin{lstlisting}
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+	
+public class Node
+{
+	public int NodeIndex { get; set; }
+	public int StepNumber { get; set; }
+	
+	public decimal StockPrice { get; set; }
+	public decimal OptionPrice { get; set; }
+}
+
+public abstract class BinTree
+{
+	private List<Node> nodeList;
+	public int NumberOfSteps { get; set; }
+	private int NodeCount { get; set; }
+	
+	// Tree Properties
+	public decimal Volatility { get; set; }
+	public decimal InitialStockPrice { get; set; }
+	public decimal StrikePrice { get; set; }
+	public decimal TotalTimeYears { get; set; }
+	public decimal RiskFree { get; set; }
+	public decimal MarketRiskPremium { get; set; }
+	public decimal StockBeta { get; set; }
+	
+	private decimal? deltaT;
+	public decimal DeltaT
+	{
+		get{
+			if (deltaT == null)
+				deltaT = TotalTimeYears / NumberOfSteps;
+			return deltaT.Value;
+		}
+	}
+	
+	private decimal? mu;
+	public decimal Mu
+	{
+		get{
+			if (mu == null) 
+				mu = (decimal)Math.Exp((double)Volatility * Math.Sqrt((double)DeltaT));
+			return mu.Value;
+		}
+	}
+	
+	private decimal? de;
+	public decimal De
+	{
+		get{
+			if (de == null) de = 1/mu;
+			return de.Value;
+		}
+	}
+
+	// Constructor
+	public BinTree (int numberOfSteps) {
+		if (numberOfSteps < 2)
+			throw new ArgumentException("Number of steps must be 2 or greater.", "numberOfSteps");
+	
+		NumberOfSteps = numberOfSteps;
+		nodeList = new List<Node>(CalculateTotalNodes(numberOfSteps));
+		
+		BuildTree();
+	}
+	
+	private void BuildTree() {
+		for (int step = 1; step <= NumberOfSteps; step++) {
+			
+			int firstNode = CalculateTotalNodes(step-1)+1;
+			int lastNode = CalculateTotalNodes(step);
+			for (int idx = firstNode; idx <= lastNode; idx++) {
+				
+				var node = new Node();
+				node.StepNumber = step;
+				node.NodeIndex = idx;
+				nodeList.Add(node);
+				
+				if (idx != nodeList.Count)
+					throw new Exception("Node was added to the wrong possition");
+			}
+		}
+    		NodeCount = nodeList.Count;
+	}
+	
+	public void CalculateStockPrices() {
+		var rootNode = GetRootNode();
+		rootNode.StockPrice = InitialStockPrice;
+
+		for (int step = 2; step <= NumberOfSteps; step++) {
+			bool isFirstNodeInStep = true;
+			foreach (var node in IterateNodesOfStep(step)) {
+				if (isFirstNodeInStep) {
+					// If it's the first node, the value is S*u
+					isFirstNodeInStep = false;
+
+					if (step == 2) {
+						node.StockPrice = rootNode.StockPrice * Mu;
+					} else {
+						var downParentNode = CalculateTotalNodes(step-2)+1;
+						node.StockPrice = nodeList[downParentNode-1].StockPrice * Mu;
+					}
+				} else {
+					// Nodes other than the first one can be calculated as S*d
+					int nodeOffset = CalculateTotalNodes(step) - node.NodeIndex;
+					int upParentNode = CalculateTotalNodes(step - 1) - nodeOffset;
+					node.StockPrice = nodeList[upParentNode-1].StockPrice * De;
+				}
+			}
+		}
+	}
+	
+	public abstract void CalculateOptionPrices();
+	
+	// Static Index Based Helper Methods
+	public static int CalculateTotalNodes(int numberOfSteps) {
+		if (numberOfSteps <= 0) return 0;
+		return (numberOfSteps + 1) * numberOfSteps / 2;
+	}
+	
+	public static int GetIndexFirstNodeInStep(int stepNumber) {
+		return CalculateTotalNodes(stepNumber-1) + 1;
+	}
+	
+	public static int GetIndexLastNodeInStep(int stepNumber) {
+		return CalculateTotalNodes(stepNumber);
+	}
+	
+	public Node GetRootNode() {
+		return nodeList[0];
+	}
+	
+	public Node GetFirstNodeInStep(int stepNumber) {
+		if (stepNumber > NumberOfSteps) return null;
+		return nodeList[GetIndexFirstNodeInStep(stepNumber)-1];
+	}
+	
+	public Node GetLastNodeInStep(int stepNumber) {
+		if (stepNumber > NumberOfSteps) return null;
+		return nodeList[GetIndexLastNodeInStep(stepNumber)-1];
+	}
+	
+	public int GetStepFromNode(Node node) {
+		return node.StepNumber;
+	}
+	
+	public Node GetUpDependantNode(Node node) {
+		int idx = node.NodeIndex + CalculateTotalNodes(node.StepNumber) - CalculateTotalNodes(node.StepNumber - 1);
+		if (NodeCount < idx) return null;
+			return nodeList[idx-1];
+	}
+	
+	public Node GetDownDependantNode(Node node) {
+		int idx = node.NodeIndex + CalculateTotalNodes(node.StepNumber) - CalculateTotalNodes(node.StepNumber - 1) + 1;
+		if (NodeCount < idx) return null;
+			return nodeList[idx-1];
+	}
+	
+	public IEnumerable<Node> IterateNodesOfStep(int stepNumber) {
+		int firstNode = CalculateTotalNodes(stepNumber-1)+1;
+		int lastNode = CalculateTotalNodes(stepNumber);
+		for (int idx = firstNode; idx <= lastNode; idx++)
+			yield return nodeList[idx-1];
+	}
+}
+
+public class CapmBinTree : BinTree
+{
+	public CapmBinTree (int numberOfSteps) : base(numberOfSteps) {}
+	
+	public override void CalculateOptionPrices() {
+		// First, calculate last step prices
+		foreach (var node in IterateNodesOfStep(NumberOfSteps)) {
+			node.OptionPrice = Math.Max(node.StockPrice - StrikePrice, 0);
+		}
+
+		decimal rfTimesDelta = (decimal)Math.Exp((double)RiskFree * (double)DeltaT);
+		
+		// Now, in previous steps... 
+		for (int step = NumberOfSteps-1; step >= 1; step--) {
+			// calculate the beta and then the option price
+			foreach (var node in IterateNodesOfStep(step)) {
+				CalcOptionPrice(node, rfTimesDelta, step);
+			}
+		}
+	}
+
+	private void CalcOptionPrice(Node node, decimal rfTimesDelta, int step) {
+		decimal rfTimesDelta = (decimal)Math.Exp((double)RiskFree * (double)DeltaT);
+
+		var upDep = GetUpDependantNode(node);
+		var downDep = GetDownDependantNode(node);
+		
+		// Delta OK!
+		 decimal delta = (upDep.OptionPrice - downDep.OptionPrice) /
+            			(upDep.StockPrice - downDep.StockPrice);
+		
+		// Bond OK!
+		decimal bond = (Mu * downDep.OptionPrice - De * upDep.OptionPrice) /
+      			      ((Mu - De) * rfTimesDelta);
+		
+		decimal totalReplPortfolio = (delta * node.StockPrice + bond);
+		decimal optionBeta = 0;
+		if (totalReplPortfolio != 0)
+	                optionBeta = delta * node.StockPrice / totalReplPortfolio * StockBeta;
+
+		decimal rc = RiskFree + optionBeta * MarketRiskPremium;
+		decimal rs = RiskFree + StockBeta * MarketRiskPremium;
+		decimal p = (rs * DeltaT - De + 1) / (Mu - De);
+
+		node.OptionPrice = (p * upDep.OptionPrice + (1 - p) * downDep.OptionPrice) / 
+			(1 + rc * DeltaT);
+	}
+}
+\end{lstlisting}

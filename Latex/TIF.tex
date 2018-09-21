@@ -1,0 +1,88 @@
+\documentclass[letterpaper,oneside,12pt]{report}
+
+\usepackage{amsmath,amssymb,amsfonts,latexsym,cancel} %Soporte para math
+\usepackage[pdftex]{graphicx}			%Soporte para gráficos..
+\usepackage[pdftex,margin=1in]{geometry}			%to make letterpaper work
+
+\usepackage{float}		% to show floating figures
+\usepackage{listings}	% to add source codes
+\usepackage{color}		% colored fonts
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\DeclareGraphicsRule{.wmf}{bmp}{}{}
+
+\usepackage[utf8]{inputenc}			% Use for Linux (latin1 instead of utf8 for MS)
+\usepackage[spanish]{babel}  		% Use this to change titles to Spanish
+\usepackage{verbatim} 				% To allow \begin{comment}
+
+% If the installation of the APACITE package is required,
+% go to the latex folder and remove all the apacite*.* files
+% _except_ for apacite.dtx and apacite.ins. Then run "latex apacite.ins"
+% and it will install the required files.
+\usepackage{apacite}
+	
+\usepackage{setspace}	% to set line spacing 
+
+
+\begin{document}
+
+\onehalfspace
+
+\newcommand{\one}[1]{\mathbf{1}_{#1}}
+
+\renewcommand{\contentsname}{Contenido}
+\renewcommand{\partname}{Parte}
+\renewcommand{\indexname}{Lista Alfabética}
+\renewcommand{\appendixname}{Anexo}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\listfigurename}{Lista de Figuras}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listtablename}{Lista de Tablas}
+\renewcommand{\abstractname}{Abstract}
+\renewcommand{\chaptername}{Capítulo}
+\renewcommand{\refname}{Referencias}
+
+
+% Reset some commands to the default, to change the biography display:
+% http://www.cs.ucf.edu/~leavens/texmf/tex/latex/misc/apacite.sty
+\renewcommand{\BOthers}[1]{et al.{}}
+\renewcommand{\BOthersPeriod}[1]{et al.{}}
+
+
+% list options
+\renewcommand{\labelitemi}{$-$}
+\renewcommand{\labelitemii}{$\cdot$}
+\renewcommand{\labelitemiii}{$\circ$}
+\renewcommand{\labelitemiv}{$\bullet$}
+
+\renewcommand{\@listI}{%
+\leftmargin=50pt
+\rightmargin=0pt
+\labelsep=5pt
+\labelwidth=20pt
+\itemindent=0pt
+\listparindent=0pt
+\topsep=0pt plus 2pt minus 4pt
+\partopsep=0pt plus 1pt minus 1pt
+\parsep=-5pt
+\itemsep=\parsep}
+
+
+
+\include{Caratula}
+\include{Abstract}
+\setcounter{page}{1}
+\include{Indice}
+\include{Introduccion}
+\include{CAPM}
+\include{ValuacionOpciones}
+\include{ValuacionMedianteCAPM}
+\include{Conclusion}
+
+\input{AnexoCodigoApp}
+\input{AnexoHerramientasBS}
+\input{AnexoGraficos}
+
+\input{Referencias}
+
+\end{document}

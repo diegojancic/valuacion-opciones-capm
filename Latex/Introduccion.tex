@@ -1,0 +1,42 @@
+
+
+\chapter*{Introducción}\label{introduccion}
+\addcontentsline{toc}{chapter}{Introducción}
+
+En el presente trabajo se aborda la problemática de la valuación de un tipo de instrumento financiero que se negocia en gran volumen en los mercados de capitales del mundo. Éstos, conocidos como opciones sobre acciones de tipo europeo, son contratos a través de los cuales el inversor tiene el derecho, pero no la obligación, de comprar o vender la acción subyacente en una determinada fecha \cite{hull}. Cuando un participante de mercado desea asignarle un precio a estos activos, puede recurrir a alguno de los modelos financieros de valuación que proporcionan las finanzas.
+
+Entre ellos podemos mencionar el Modelo de Valuación de Activos de Capital (CAPM, por sus siglas en inglés), siendo este el más utilizado tanto en el ámbito profesional como en el académico debido a la simpleza de los supuestos económicos en los que se basa. Dada la amplitud de este modelo, el mismo es conceptualmente utilizable para valuar cualquier tipo de instrumento financiero, incluso las opciones de tipo europeo cuyo análisis es el objetivo del presente trabajo. Sin embargo, si bien el CAPM es uno de los métodos con mayor aceptación para la valuación de diversos activos, es poco frecuente su utilización en estos contratos.
+
+En 1973, Fisher Black y Myron Scholes (B\&S) desarrollaron otro modelo para valuar opciones europeas, el cual se conoce por el nombre de sus creadores. Entre los profesionales del área, este modelo fue pionero para la valuación de dichos instrumentos, y desde entonces ha sido el de mayor difusión debido a que su aplicación es matemáticamente simple. Esta ecuación, que le valió el premio Nobel a Myron Scholes, es ampliamente utilizada en la actualidad por los participantes del mercado de opciones.
+
+El objetivo general de este trabajo es comprobar que la valuación de una opción europea mediante CAPM es posible, y que su utilización conduce a los mismos resultados que el modelo desarrollado por B\&S. En teoría, es esperable que los dos modelos mencionados sean válidos y que su utilización no conlleve a resultados contrapuestos.
+
+A su vez, se mostrará que el riesgo de esta clase de instrumentos medido por su \textit{beta} ($\beta$) es considerablemente mayor al de las acciones asociadas. De la misma forma, se espera verificar que la medida de riesgo $ \beta $ de éstos varía continuamente con el paso del tiempo, a diferencia de la de los activos subyacentes, que se asume constante.
+
+La comparación se realizará entre dos modelos teóricos para la valuación de opciones. A efectos de analizar la precisión de los resultados de dichos modelos, es necesario utilizar valores numéricos como \textit{input}. Si bien los datos pueden obtenerse del mercado, esto no aportaría valor al análisis ya que la existencia en la realidad de dichos valores no es de importancia. Específicamente, será necesario conocer datos como el precio de una acción, su volatilidad y el tiempo al vencimiento de la opción; todos ellos son valores que no se encuentran relacionados entre sí, y por ende pueden utilizarse valores ficticios a la hora de comprobar la viabilidad práctica del modelo. 
+
+No se partirá de ninguna fuente de datos para comprobar los modelos, serán simplemente supuestos que sirvan para continuar con el desarrollo de los ejemplos presentados. Una vez que se obtengan los resultados de los modelos bajo estudio, las comparaciones y el análisis requerido se hará sobre estos resultados.
+
+Dada el metodología utilizada, los resultados del análisis serán atemporales y aplicables a cualquier mercado que cumpla, al menos, con los supuestos en los que se base cada modelo (véase secciones 1.1 y 2.3).
+
+
+
+\section*{¿Qué son las opciones?}
+\addcontentsline{toc}{section}{¿Qué son las opciones?}
+
+Se conoce con este nombre a un tipo de contrato que se realiza exclusivamente entre dos partes, la emisora y la compradora del mismo. La primera, se obliga a comprar o vender un activo subyacente a un determinado precio si el adquirente del contrato lo desea. Desde la óptica del comprador del contrato, es un derecho a realizar la compra o venta de un determinado activo, en un momento o en un plazo de tiempo prefijado en el contrato \cite{hull}.
+
+Es necesario definir algunos términos para comprender esto. Primero, se denomina activo subyacente a un valor negociable, el cual es sujeto de intercambio en caso de ejercerse la opción. Por ejemplo, son activos subyacentes las acciones de empresas, los contratos de futuros sobre \textit{commodities} y los títulos de renta fija, entre otros. Así mismo, el contrato define el precio al cual se efectuará la operación de compra o venta, o \textit{Strike Price}. La fecha de ejercicio es otro factor importante, ya que define el periodo de validez del contrato; una vez pasada esa fecha, si el derecho no se ejerció, el contrato queda sin efecto.
+
+Estos contratos son negociados activamente en la actualidad, siendo un mercado que tiene menos de treinta años, solo en la bolsa de comercio de opciones de Chicago se negocian más de mil millones de contratos al año \cite{cboe}. Eso es muestra de la importancia que cobran estos activos en los mercados de valores en la actualidad.
+
+Al ser un contrato, éste puede tomar una incontable cantidad de formas. Incluso existen opciones exóticas o no estándar negociadas en mercados no regulados. Pero es preciso describir las que se negocian con mayor volumen en los mercados abiertos.
+
+El primer aspecto relevante es que una opción puede ser de compra (\textit{call}) o de venta (\textit{put}). Las primeras dan el derecho al adquirente de la misma a comprar el activo subyacente al \textit{Strike Price} prefijado. Por el contrario, las \textit{put}, dan el derecho de venta del subyacente. El activo sobre el cual subyace la opción puede ser una acción, un índice bursátil o el estado de un crédito, entre otros \cite{elton}. De las características de este activo dependerá en gran medida el valor de la opción negociada.
+
+Otra característica importante tiene que ver con el periodo en el cual se puede ejercer la opción. En base a esto, se dividen en opciones europeas y americanas; clasificación que no está relacionada con la ubicación geográfica de la misma \cite{hull}. Las opciones americanas son ejercibles durante todo el periodo de validez del contrato, mientras que las europeas sólo lo son a la finalización del contrato. A modo de ejemplo, si una opción americana \textit{call} con fecha de vencimiento en mayo es comprada en enero, el inversor puede ejercerla en cualquier momento entre enero y mayo. Si, en cambio, la opción fuese europea, solo podría ejercerla el día que vence (en mayo).
+
+Si bien existe una amplia gama de opciones como se explicó anteriormente, en el presente trabajo se analiza la valuación de opciones europeas sobre acciones que no pagan dividendos, ya sean del tipo \textit{call} o \textit{put}. La restricción en el análisis se debe a que estas pueden ser valuadas mediante los dos modelos que se desarrollan, el CAPM y el de B\&S.
+
+El monto que paga una opción del tipo \textit{call} si se ejerce al vencimiento, conocido como \textit{payoff}, es igual al precio del subyacente en ese momento menos el precio de ejercicio. En caso de que esto último sea negativo, un inversor racional optaría por no ejercer su derecho y por lo tanto el mismo expiraría sin obtener ningún resultado. En ambos casos, el comprador realizó una inversión inicial para adquirir el derecho, por lo que esto debe restarse para obtener el resultado neto de la operación. En el caso de opciones \textit{put}, el razonamiento es inverso: la ganancia será el precio de ejercicio menos el valor del subyacente en el momento que se ejerce, o cero en el caso en que este resultado sea negativo. Estos resultados serán analizados en más detalle en los siguientes capítulos.
+
