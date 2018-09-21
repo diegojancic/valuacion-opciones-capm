@@ -1,5 +1,9 @@
 # Utilización del CAPM para la Valuación de Opciones
 
+![Beta de una opcion CALL](Graphs/beta3d.png)
+
+# Descripción
+
 Trabajo de Investigación Final en Finanzas
 
 **Tutor: Dr. Marcelo Perillo**
@@ -23,8 +27,6 @@ En el presente trabajo se desarrolla al modelo de valuación de activos de capit
 El Dr. Perillo, la UADE o el Lic. Jancic no se hacen responsables por el uso que se le pueda dar a la publicación. El contenido publicado aquí fue utilizado como trabajo final e integrador del autor y la publicación en el presente medio es exclusivamente con fines informativo y de archivo.
 
 
-# Links de Interés
+# Paper Completo
 
 [Texto Completo del Trabajo](Latex/TIF.pdf)
-
-![Beta de una opcion CALL](Graphs/beta3d.png)
